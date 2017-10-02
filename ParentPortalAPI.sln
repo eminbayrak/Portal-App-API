@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParentPortalAPI", "ParentPortalAPI\ParentPortalAPI.csproj", "{86608C98-BA9E-4BD4-A70C-6AE4746AE221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParentPortalAPI.Tests", "ParentPortalAPI.Tests\ParentPortalAPI.Tests.csproj", "{B8170C7E-8551-40ED-B043-0A87D617517B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86608C98-BA9E-4BD4-A70C-6AE4746AE221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86608C98-BA9E-4BD4-A70C-6AE4746AE221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86608C98-BA9E-4BD4-A70C-6AE4746AE221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86608C98-BA9E-4BD4-A70C-6AE4746AE221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8170C7E-8551-40ED-B043-0A87D617517B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8170C7E-8551-40ED-B043-0A87D617517B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8170C7E-8551-40ED-B043-0A87D617517B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8170C7E-8551-40ED-B043-0A87D617517B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2F2B53D-1A4F-448D-BB0D-4D3E3945FA80}
+	EndGlobalSection
+EndGlobal
