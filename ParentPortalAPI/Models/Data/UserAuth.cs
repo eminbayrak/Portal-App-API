@@ -7,6 +7,6 @@ namespace ParentPortalAPI.Models.Data
 {
     public class UserAuth
     {
-        public 
+        
     }
 }
