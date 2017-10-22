@@ -11,7 +11,7 @@ namespace ParentPortalAPI.Models.ApiModels
         public Authentication() { }
 
 
-        public Authentication(UserAuth userAuthDTO)
+        public Authentication(AuthToken authTokenDTO)
         {
 
         }

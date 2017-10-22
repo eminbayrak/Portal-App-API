@@ -7,13 +7,13 @@ using System.Web;
 
 namespace ParentPortalAPI.Models.Data
 {
-    [Table("Account")]
-    public class Account
+    [Table("AuthToken")]
+    public class AuthToken
     {
         [Key]
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
+        public string Method { get; set; }
+        public string Uri { get; set; }
+        public string Data { get; set; }
     }
 }

@@ -11,5 +11,6 @@ namespace ParentPortalAPI.Models.Data
     {
         public DbSet<Account> Accounts { get; set; }
 
+        public System.Data.Entity.DbSet<ParentPortalAPI.Models.Data.AuthToken> AuthTokens { get; set; }
     }
 }

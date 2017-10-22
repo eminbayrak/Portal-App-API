@@ -87,8 +87,7 @@ CREATE TABLE [dbo].[StudentGroupMap] (
 	GroupId int NOT NULL
 );
 
-CREATE TABLE [dbo].[AuthToken]
-(
+CREATE TABLE [dbo].[AuthToken](
 	[Id] INT NOT NULL PRIMARY KEY, 
     [Method] CHAR(10) NOT NULL, 
     [URI] VARCHAR(2048) NULL, 
