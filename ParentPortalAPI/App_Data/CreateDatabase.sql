@@ -1,11 +1,11 @@
-﻿CREATE TABLE dbo.Account (
+﻿CREATE TABLE [dbo].[Account] (
 	Id int NOT NULL IDENTITY(1,1),
 	FirstName varchar(50),
 	LastName varchar(50),
 	Email varchar(255)
 );
 
-CREATE TABLE dbo.Event (
+CREATE TABLE [dbo].[Event] (
 	Id int NOT NULL IDENTITY(1,1),
 	StartDateTime datetime NOT NULL,
 	EndDateTime datetime NOT NULL,
@@ -14,14 +14,14 @@ CREATE TABLE dbo.Event (
 	LocationId int
 );
 
-CREATE TABLE dbo.[Group] (
+CREATE TABLE [dbo].[Group] (
 	Id int NOT NULL IDENTITY(1,1),
 	Name varchar(64) NOT NULL,
 	Description varchar(8000),
 	DistrictId varchar(100)
 );
 
-CREATE TABLE dbo.Student (
+CREATE TABLE [dbo].[Student] (
 	Id int NOT NULL IDENTITY(1,1),
 	FirstName varchar(50) NOT NULL,
 	LastName varchar(50) NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE dbo.Student (
 	Email varchar(255)
 );
 
-CREATE TABLE dbo.District (
+CREATE TABLE [dbo].[District] (
 	Id int NOT NULL IDENTITY(1,1),
 	Name varchar(100),
 	Phone varchar(100),
@@ -46,9 +46,9 @@ CREATE TABLE dbo.District (
 	StateProvince varchar(100)
 );
 
-CREATE INDEX NewTable_Id_IDX ON dbo.District (Id);
+CREATE INDEX NewTable_Id_IDX ON [dbo].[District] (Id);
 
-CREATE TABLE dbo.Location (
+CREATE TABLE [dbo].[Location] (
 	Id int NOT NULL IDENTITY(1,1),
 	Name varchar(100),
 	Phone varchar(100),
@@ -59,7 +59,7 @@ CREATE TABLE dbo.Location (
 	StateProvince varchar(100)
 );
 
-CREATE TABLE dbo.Topic (
+CREATE TABLE [dbo].[Topic] (
 	Id int NOT NULL IDENTITY(1,1),
 	Title varchar(100) NOT NULL,
 	CreatedDateTime datetime NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE dbo.Topic (
 	GroupId int NOT NULL
 );
 
-CREATE TABLE dbo.Comment (
+CREATE TABLE [dbo].[Comment] (
 	Id int NOT NULL IDENTITY(1,1),
 	Content varchar(512) NOT NULL,
 	CreatedDateTime datetime NOT NULL,
@@ -77,12 +77,21 @@ CREATE TABLE dbo.Comment (
 	AccountId int NOT NULL
 );
 
-CREATE TABLE dbo.AccountStudentMap (
+CREATE TABLE [dbo].[AccountStudentMap] (
 	AccountID int NOT NULL,
 	StudentId int NOT NULL
 );
 
-CREATE TABLE dbo.StudentGroupMap (
+CREATE TABLE [dbo].[StudentGroupMap] (
 	StudentId int NOT NULL,
 	GroupId int NOT NULL
+);
+
+CREATE TABLE [dbo].[AuthToken]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Method] CHAR(10) NOT NULL, 
+    [URI] VARCHAR(2048) NULL, 
+    [Data] VARCHAR(4096) NULL, 
+    [AccountId] INT NOT NULL
 );
