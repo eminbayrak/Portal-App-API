@@ -19,7 +19,11 @@ namespace ParentPortalAPI.Controllers.ApiControllers
         // GET: api/Authentication
         public IQueryable<AuthToken> GetAuthTokens()
         {
-            return db.AuthTokens;
+           /* if (db.AuthTokens)
+                return "";
+            else*/
+                return db.AuthTokens;
+
         }
 
         // GET: api/Authentication/5
