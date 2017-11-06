@@ -249,7 +249,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-ParentPortalAPI-20171105084016.mdf" />
+    <Content Include="App_Data\aspnet-ParentPortalAPI-20171105084016_log.ldf">
+      <DependentUpon>aspnet-ParentPortalAPI-20171105084016.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\CreateDatabase.sql" />
+    <Content Include="App_Data\GroupContext-20171105214139.mdf" />
+    <Content Include="App_Data\GroupContext-20171105214139_log.ldf">
+      <DependentUpon>GroupContext-20171105214139.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\ParentPortal-Debug.mdf" />
     <Content Include="App_Data\ParentPortal-Debug_log.ldf">
       <DependentUpon>ParentPortal-Debug.mdf</DependentUpon>
