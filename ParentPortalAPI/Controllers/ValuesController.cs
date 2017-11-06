@@ -5,8 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace ParentPortalAPI.Controllers.ApiControllers
+namespace ParentPortalAPI.Controllers
 {
+    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
