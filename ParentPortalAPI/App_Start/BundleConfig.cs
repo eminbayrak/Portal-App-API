@@ -23,6 +23,13 @@ namespace ParentPortalAPI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/api").Include(
+                      "~/Scripts/knockout-{version}.js",
+                      "~/Scripts/api-debug.js"));
+
+            //set to false for debugging
+            BundleTable.EnableOptimizations = true;
         }
     }
 }
