@@ -13,6 +13,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using ParentPortalAPI.Models.ViewModels;
+using ParentPortalAPI.Models.BindingModels;
 using ParentPortalAPI.Models;
 using ParentPortalAPI.Providers;
 using ParentPortalAPI.Results;
