@@ -47,5 +47,7 @@ namespace ParentPortalAPI.Models
             modelBuilder.Entity<IdentityUserClaim>().ToTable("AccountClaims");
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
         }
+
+        public DbSet<Group> Groups { get; set; }
     }
 }
