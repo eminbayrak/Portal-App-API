@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ParentPortalAPI.Models
+namespace ParentPortalAPI.Models.ViewModels
 {
     // Models returned by AccountController actions.
 

@@ -17,7 +17,7 @@ namespace ParentPortalAPI.Controllers
     [Authorize]
     public class GroupsController : ApiController
     {
-        private GroupContext db = new GroupContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Groups
         public IQueryable<Group> GetGroups()
