@@ -238,10 +238,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BindingModels\AccountBindingModels.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\GroupContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -249,11 +248,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-ParentPortalAPI-20171105084016.mdf" />
-    <Content Include="App_Data\aspnet-ParentPortalAPI-20171105084016_log.ldf">
-      <DependentUpon>aspnet-ParentPortalAPI-20171105084016.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\CreateDatabase.sql" />
+    <Content Include="App_Data\DefaultConnection.mdf" />
+    <Content Include="App_Data\DefaultConnection_log.ldf">
+      <DependentUpon>DefaultConnection.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\GroupContext-20171105214139.mdf" />
     <Content Include="App_Data\GroupContext-20171105214139_log.ldf">
       <DependentUpon>GroupContext-20171105214139.mdf</DependentUpon>
@@ -261,6 +260,10 @@
     <Content Include="App_Data\ParentPortal-Debug.mdf" />
     <Content Include="App_Data\ParentPortal-Debug_log.ldf">
       <DependentUpon>ParentPortal-Debug.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\ParentPortal-LocalDb.mdf" />
+    <Content Include="App_Data\ParentPortal-LocalDb_log.ldf">
+      <DependentUpon>ParentPortal-LocalDb.mdf</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -322,7 +325,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
