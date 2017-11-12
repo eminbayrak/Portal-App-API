@@ -14,7 +14,7 @@ using ParentPortalAPI.Models;
 
 namespace ParentPortalAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class GroupsController : ApiController
     {
         private GroupContext db = new GroupContext();
