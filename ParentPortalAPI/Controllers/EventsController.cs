@@ -15,7 +15,8 @@ namespace ParentPortalAPI.Controllers
 {
     public class EventsController : ApiController
     {
-        private EventContext db = new EventContext();
+        //private EventContext db = new EventContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Events
         public IQueryable<Event> GetEvents()

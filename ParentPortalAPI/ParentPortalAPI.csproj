@@ -241,7 +241,6 @@
     </Compile>
     <Compile Include="Models\BindingModels\AccountBindingModels.cs" />
     <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\EventContext.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -252,18 +251,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\CreateDatabase.sql" />
-    <Content Include="App_Data\DefaultConnection.mdf" />
-    <Content Include="App_Data\DefaultConnection_log.ldf">
-      <DependentUpon>DefaultConnection.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\GroupContext-20171105214139.mdf" />
-    <Content Include="App_Data\GroupContext-20171105214139_log.ldf">
-      <DependentUpon>GroupContext-20171105214139.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\ParentPortal-Debug.mdf" />
-    <Content Include="App_Data\ParentPortal-Debug_log.ldf">
-      <DependentUpon>ParentPortal-Debug.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\ParentPortal-LocalDb.mdf" />
     <Content Include="App_Data\ParentPortal-LocalDb_log.ldf">
       <DependentUpon>ParentPortal-LocalDb.mdf</DependentUpon>
