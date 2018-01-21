@@ -13,6 +13,7 @@ using ParentPortalAPI.Models;
 
 namespace ParentPortalAPI.Controllers
 {
+    [Authorize]
     public class EventsController : ApiController
     {
         //private EventContext db = new EventContext();
