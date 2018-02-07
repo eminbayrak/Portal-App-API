@@ -14,20 +14,18 @@ using ParentPortalAPI.Models;
 
 namespace ParentPortalAPI.Controllers
 {
+    //[Authorize]
     public class GroupsController : ApiController
     {
-        private GroupContext db = new GroupContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Groups
-        [Authorize]
         public IQueryable<Group> GetGroups()
         {
             return db.Groups;
         }
 
         // GET: api/Groups/5
-        [Authorize]
-
         [ResponseType(typeof(Group))]
         public IHttpActionResult GetGroup(int id)
         {
@@ -41,8 +39,6 @@ namespace ParentPortalAPI.Controllers
         }
 
         // PUT: api/Groups/5
-        [Authorize]
-
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGroup(int id, Group group)
         {
@@ -78,8 +74,6 @@ namespace ParentPortalAPI.Controllers
         }
 
         // POST: api/Groups
-        [Authorize]
-
         [ResponseType(typeof(Group))]
         public IHttpActionResult PostGroup(Group group)
         {
@@ -100,8 +94,6 @@ namespace ParentPortalAPI.Controllers
 
         // DELETE: api/Groups/5
         [ResponseType(typeof(Group))]
-        [Authorize]
-
         public IHttpActionResult DeleteGroup(int id)
         {
             Group group = db.Groups.Find(id);
