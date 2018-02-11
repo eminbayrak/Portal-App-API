@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -27,7 +28,7 @@ namespace ParentPortalAPI.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -51,5 +52,21 @@ namespace ParentPortalAPI.Models
         public DbSet<Group> Groups { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Comment> Comments { get; set; }
+    }
+
+    public class ApplicationUserClaim : IdentityUserClaim { }
+
+    public class ApplicationUserLogin : IdentityUserLogin { }
+
+    public class ApplicationUserRole : IdentityUserRole { }
+
+    public class ApplicationRole : IdentityRole<string, ApplicationUserRole> { }
+
+    public class ApplicationUserStore :
+    UserStore<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>,
+    IUserStore<ApplicationUser>,
+    IDisposable
+    {
+        public ApplicationUserStore(ApplicationDbContext context) : base(context) { }
     }
 }
