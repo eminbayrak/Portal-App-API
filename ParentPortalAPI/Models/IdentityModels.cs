@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace ParentPortalAPI.Models
 {
-    public class ApplicationUser : IdentityUser<string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
+    public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
@@ -20,10 +21,10 @@ namespace ParentPortalAPI.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string RoleID { get; set; }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
-    {
+    public class ApplicationDbContext : IdentityDbContext { 
         public ApplicationDbContext()
             : base("DefaultConnection")
         {
@@ -41,12 +42,13 @@ namespace ParentPortalAPI.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApplicationUser>().ToTable("Accounts");
             modelBuilder.Entity<IdentityUser>().ToTable("Accounts");
             modelBuilder.Entity<IdentityUserRole>().ToTable("AccountRoles");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("AccountLogins");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("AccountClaims");
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+
+
         }
 
         public DbSet<Group> Groups { get; set; }
@@ -58,15 +60,11 @@ namespace ParentPortalAPI.Models
 
     public class ApplicationUserLogin : IdentityUserLogin { }
 
-    public class ApplicationUserRole : IdentityUserRole { }
-
-    public class ApplicationRole : IdentityRole<string, ApplicationUserRole> { }
-
-    public class ApplicationUserStore :
-    UserStore<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>,
-    IUserStore<ApplicationUser>,
-    IDisposable
+    public class ApplicationUserRole : IdentityUserRole
     {
-        public ApplicationUserStore(ApplicationDbContext context) : base(context) { }
+    }
+
+    public class ApplicationRole : IdentityRole
+    {
     }
 }
