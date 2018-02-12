@@ -41,5 +41,17 @@ namespace ParentPortalAPI
             }
             return manager;
         }
+
+    }
+    public class ApplicationRoleManager : RoleManager<ApplicationRole, string>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole, string> role) : base(role)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+           return new ApplicationRoleManager(new RoleStore<ApplicationRole, string, ApplicationUserRole>(context.Get<ApplicationDbContext>()));
+        }
     }
 }

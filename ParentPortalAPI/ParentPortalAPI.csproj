@@ -244,7 +244,6 @@
     <Compile Include="Models\BindingModels\AccountBindingModels.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Group.cs" />
