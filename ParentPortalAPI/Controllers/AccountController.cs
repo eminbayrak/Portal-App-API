@@ -27,7 +27,7 @@ namespace ParentPortalAPI.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
+       // private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {

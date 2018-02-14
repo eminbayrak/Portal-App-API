@@ -49,9 +49,9 @@ namespace ParentPortalAPI
         {
         }
 
-        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
-        {
-           return new ApplicationRoleManager(new RoleStore<ApplicationRole, string, ApplicationUserRole>(context.Get<ApplicationDbContext>()));
-        }
+        //public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        //{
+        //   return new ApplicationRoleManager(new RoleStore<ApplicationRole, string, ApplicationUserRole>(context.Get<ApplicationDbContext>()));
+        //}
     }
 }

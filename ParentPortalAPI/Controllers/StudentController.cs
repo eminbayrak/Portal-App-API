@@ -7,7 +7,9 @@ using System.Web.Http;
 
 namespace ParentPortalAPI.Controllers
 {
+#if (!DEBUG)
     [Authorize]
+#endif
     public class StudentController : ApiController
     {
         // GET: api/Student

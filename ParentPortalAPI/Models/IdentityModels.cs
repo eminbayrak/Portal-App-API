@@ -21,14 +21,10 @@ namespace ParentPortalAPI.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string RoleID { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext { 
-        public ApplicationDbContext()
-            : base("DefaultConnection")
-        {
-        }
+        public ApplicationDbContext() : base("DefaultConnection") { }
 
         public static ApplicationDbContext Create()
         {
@@ -42,11 +38,14 @@ namespace ParentPortalAPI.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<IdentityUser>().ToTable("Accounts");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("AccountRoles");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("AccountLogins");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("AccountClaims");
-            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ApplicationUser>().ToTable("Account");
+            modelBuilder.Entity<IdentityUser>().ToTable("Account");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("AccountRole");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("AccountLogin");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("AccountClaim");
+            modelBuilder.Entity<IdentityRole>().ToTable("Role");
+
 
 
         }
@@ -54,17 +53,14 @@ namespace ParentPortalAPI.Models
         public DbSet<Group> Groups { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<District> Districts { get; set; }
     }
 
     public class ApplicationUserClaim : IdentityUserClaim { }
 
     public class ApplicationUserLogin : IdentityUserLogin { }
 
-    public class ApplicationUserRole : IdentityUserRole
-    {
-    }
+    public class ApplicationUserRole : IdentityUserRole { }
 
-    public class ApplicationRole : IdentityRole<string, ApplicationUserRole>
-    {
-    }
+    public class ApplicationRole : IdentityRole<string, ApplicationUserRole> { }
 }
