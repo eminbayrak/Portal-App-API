@@ -12,5 +12,7 @@ namespace ParentPortalAPI.Models
         public string Description { get; set; }
         public string DistrictId { get; set; }
         public string UserId { get; set; }
+        public ICollection<AccountGroup> AccountGroups { get; set; }
+        
     }
 }

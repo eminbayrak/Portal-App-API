@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -21,6 +22,7 @@ namespace ParentPortalAPI.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public ICollection<AccountGroup> AccountGroups { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext { 
@@ -39,15 +41,28 @@ namespace ParentPortalAPI.Models
         {
             base.OnModelCreating(modelBuilder);
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApplicationUser>().ToTable("Account");
-            modelBuilder.Entity<IdentityUser>().ToTable("Account");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("AccountRole");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("AccountLogin");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("AccountClaim");
-            modelBuilder.Entity<IdentityRole>().ToTable("Role");
-
-
-
+            modelBuilder.Entity<ApplicationUser>()
+                .ToTable("Account");
+            modelBuilder.Entity<IdentityUser>()
+                .ToTable("Account");
+            modelBuilder.Entity<IdentityUserRole>()
+                .ToTable("AccountRole");
+            modelBuilder.Entity<IdentityUserLogin>()
+                .ToTable("AccountLogin");
+            modelBuilder.Entity<IdentityUserClaim>()
+                .ToTable("AccountClaim");
+            modelBuilder.Entity<IdentityRole>()
+                .ToTable("Role");
+            modelBuilder.Entity<AccountGroup>()
+                .HasKey(ag => new { ag.AccountId, ag.GroupId });
+            modelBuilder.Entity<AccountGroup>()
+                .HasRequired(ag => ag.Account)
+                .WithMany(g => g.AccountGroups)
+                .HasForeignKey(ag => ag.AccountId);
+            modelBuilder.Entity<AccountGroup>()
+                .HasRequired(ag => ag.Group)
+                .WithMany(a => a.AccountGroups)
+                .HasForeignKey(ag => ag.GroupId);
         }
 
         public DbSet<Group> Groups { get; set; }

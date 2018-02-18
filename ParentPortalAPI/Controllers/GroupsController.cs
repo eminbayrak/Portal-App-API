@@ -24,7 +24,15 @@ namespace ParentPortalAPI.Controllers
         // GET: api/Groups
         public IQueryable<Group> GetGroups()
         {
-            return db.Groups;
+            string userId = User.Identity.GetUserId();
+
+            IQueryable<Group> grp = db.Groups.Where(
+                    g => g.AccountGroups.Any(
+                        ag => ag.AccountId.Equals(userId)
+                    )
+                );
+
+            return grp;
         }
 
         // GET: api/Groups/5
