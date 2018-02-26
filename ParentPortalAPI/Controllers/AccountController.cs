@@ -63,10 +63,12 @@ namespace ParentPortalAPI.Controllers
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
             ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
-                FirstName = "",
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
