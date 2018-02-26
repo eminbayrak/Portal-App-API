@@ -23,6 +23,7 @@ namespace ParentPortalAPI.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public ICollection<AccountGroup> AccountGroups { get; set; }
+        public ICollection<AccountStudent> AccountStudents { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext {
@@ -62,6 +63,7 @@ namespace ParentPortalAPI.Models
                 .ToTable("Students");
             modelBuilder.Entity<Event>()
                 .ToTable("Events");
+
             modelBuilder.Entity<AccountGroup>()
                 .HasKey(ag => new { ag.AccountId, ag.GroupId });
             modelBuilder.Entity<AccountGroup>()
@@ -72,18 +74,32 @@ namespace ParentPortalAPI.Models
                 .HasRequired(ag => ag.Group)
                 .WithMany(a => a.AccountGroups)
                 .HasForeignKey(ag => ag.GroupId);
+
+            modelBuilder.Entity<AccountStudent>()
+                .HasKey(acs => new { acs.AccountId, acs.StudentId });
+            modelBuilder.Entity<AccountStudent>()
+                .HasRequired(acs => acs.Account)
+                .WithMany(s => s.AccountStudents)
+                .HasForeignKey(acs => acs.AccountId);
+            modelBuilder.Entity<AccountStudent>()
+                .HasRequired(acs => acs.Student)
+                .WithMany(a => a.AccountStudents)
+                .HasForeignKey(acs => acs.StudentId);
+
             modelBuilder.Entity<TopicComment>()
                 .HasKey(ct => new { ct.TopicId, ct.CommentId });
             modelBuilder.Entity<TopicComment>()
                 .HasRequired(ct => ct.Topic)
                 .WithMany(c => c.TopicComments)
                 .HasForeignKey(ag => ag.CommentId);
+
             modelBuilder.Entity<DistrictGroup>()
                 .HasKey(dg => new { dg.DistrictId, dg.GroupId });
             modelBuilder.Entity<DistrictGroup>()
                 .HasRequired(dg => dg.District)
                 .WithMany(g => g.DistrictGroups)
                 .HasForeignKey(dg => dg.GroupId);
+
             modelBuilder.Entity<GroupEvent>()
                 .HasKey(ge => new { ge.GroupId, ge.EventId });
             modelBuilder.Entity<GroupEvent>()
