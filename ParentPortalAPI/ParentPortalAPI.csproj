@@ -244,8 +244,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountGroup.cs" />
+    <Compile Include="Models\AccountStudent.cs" />
     <Compile Include="Models\BindingModels\AccountBindingModels.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\DistrictGroup.cs" />
+    <Compile Include="Models\GroupEvent.cs" />
     <Compile Include="Models\TopicComment.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\Event.cs" />

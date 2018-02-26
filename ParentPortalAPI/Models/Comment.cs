@@ -12,6 +12,6 @@ namespace ParentPortalAPI.Models
         public string CreatedDateTime { get; set; }
         public string ModifiedDateTime { get; set; }
         public int TopicId { get; set; }
-	    public ApplicationUser User { get; set; }
+	    public Account User { get; set; }
     }
 }

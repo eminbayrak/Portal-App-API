@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace ParentPortalAPI.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class Account : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Account> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
@@ -25,7 +25,7 @@ namespace ParentPortalAPI.Models
         public ICollection<AccountGroup> AccountGroups { get; set; }
     }
 
-    public class ApplicationDbContext : IdentityDbContext { 
+    public class ApplicationDbContext : IdentityDbContext {
         public ApplicationDbContext() : base("DefaultConnection") { }
 
         public static ApplicationDbContext Create()
@@ -40,7 +40,7 @@ namespace ParentPortalAPI.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApplicationUser>()
+            modelBuilder.Entity<Account>()
                 .ToTable("Account");
             modelBuilder.Entity<IdentityUser>()
                 .ToTable("Account");
@@ -52,6 +52,16 @@ namespace ParentPortalAPI.Models
                 .ToTable("AccountClaim");
             modelBuilder.Entity<IdentityRole>()
                 .ToTable("Role");
+            modelBuilder.Entity<Topic>()
+                .ToTable("Topic");
+            modelBuilder.Entity<Comment>()
+                .ToTable("Comments");
+            modelBuilder.Entity<District>()
+                .ToTable("District");
+            modelBuilder.Entity<Student>()
+                .ToTable("Students");
+            modelBuilder.Entity<Event>()
+                .ToTable("Events");
             modelBuilder.Entity<AccountGroup>()
                 .HasKey(ag => new { ag.AccountId, ag.GroupId });
             modelBuilder.Entity<AccountGroup>()
@@ -69,12 +79,15 @@ namespace ParentPortalAPI.Models
                 .WithMany(c => c.TopiComments)
                 .HasForeignKey(ag => ag.CommentId);
         }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Account> Accounts { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<District> Districts { get; set; }
-    }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Student> Studentss { get; set; }
+
+}
 
     public class ApplicationUserClaim : IdentityUserClaim { }
 

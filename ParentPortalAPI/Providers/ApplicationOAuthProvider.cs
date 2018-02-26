@@ -31,7 +31,7 @@ namespace ParentPortalAPI.Providers
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+            Account user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {

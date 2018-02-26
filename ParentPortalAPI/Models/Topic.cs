@@ -10,7 +10,7 @@ namespace ParentPortalAPI.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public Group Group { get; set; }
-        public ApplicationUser User { get; set; }
+        public Account User { get; set; }
         public ICollection<TopicComment> TopiComments { get; set; }
     }
 }
