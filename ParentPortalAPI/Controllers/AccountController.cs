@@ -27,7 +27,8 @@ namespace ParentPortalAPI.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
-       // private ApplicationRoleManager _roleManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
+        // private ApplicationRoleManager _roleManager;
 
         public AccountController()
         {
@@ -57,13 +58,15 @@ namespace ParentPortalAPI.Controllers
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
-        public UserInfoViewModel GetUserInfo()
+        public async Task<UserInfoViewModel> GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
+            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
+                FirstName = "",
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };

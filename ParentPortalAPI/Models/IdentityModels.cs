@@ -40,7 +40,6 @@ namespace ParentPortalAPI.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ApplicationUser>()
                 .ToTable("Account");
             modelBuilder.Entity<IdentityUser>()
@@ -63,8 +62,14 @@ namespace ParentPortalAPI.Models
                 .HasRequired(ag => ag.Group)
                 .WithMany(a => a.AccountGroups)
                 .HasForeignKey(ag => ag.GroupId);
+            modelBuilder.Entity<TopicComment>()
+                .HasKey(ct => new { ct.TopicId, ct.CommentId });
+            modelBuilder.Entity<TopicComment>()
+                .HasRequired(ct => ct.Topic)
+                .WithMany(c => c.TopiComments)
+                .HasForeignKey(ag => ag.CommentId);
         }
-
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Comment> Comments { get; set; }
