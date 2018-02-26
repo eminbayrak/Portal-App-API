@@ -76,8 +76,20 @@ namespace ParentPortalAPI.Models
                 .HasKey(ct => new { ct.TopicId, ct.CommentId });
             modelBuilder.Entity<TopicComment>()
                 .HasRequired(ct => ct.Topic)
-                .WithMany(c => c.TopiComments)
+                .WithMany(c => c.TopicComments)
                 .HasForeignKey(ag => ag.CommentId);
+            modelBuilder.Entity<DistrictGroup>()
+                .HasKey(dg => new { dg.DistrictId, dg.GroupId });
+            modelBuilder.Entity<DistrictGroup>()
+                .HasRequired(dg => dg.District)
+                .WithMany(g => g.DistrictGroups)
+                .HasForeignKey(dg => dg.GroupId);
+            modelBuilder.Entity<GroupEvent>()
+                .HasKey(ge => new { ge.GroupId, ge.EventId });
+            modelBuilder.Entity<GroupEvent>()
+                .HasRequired(ge => ge.Group)
+                .WithMany(e => e.GroupEvents)
+                .HasForeignKey(ge => ge.GroupId);
         }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Group> Groups { get; set; }

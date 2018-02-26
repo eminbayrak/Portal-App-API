@@ -13,6 +13,7 @@ namespace ParentPortalAPI.Models
         public string DistrictId { get; set; }
         public string UserId { get; set; }
         public ICollection<AccountGroup> AccountGroups { get; set; }
-        
+        public ICollection<GroupEvent> GroupEvents { get; set; }
+        public ICollection<GroupStudent> GroupStudents { get; set; }
     }
 }

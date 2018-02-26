@@ -18,5 +18,7 @@ namespace ParentPortalAPI.Models
         public string StateProvince { get; set; }
         public string PostalCode { get; set; }
         public string Email { get; set; }
+        public ICollection<AccountStudent> AccountStudents { get; set; }
+        public ICollection<GroupStudent> GroupStudents { get; set; }
     }
 }

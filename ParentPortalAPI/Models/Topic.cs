@@ -11,6 +11,6 @@ namespace ParentPortalAPI.Models
         public string Title { get; set; }
         public Group Group { get; set; }
         public Account User { get; set; }
-        public ICollection<TopicComment> TopiComments { get; set; }
+        public ICollection<TopicComment> TopicComments { get; set; }
     }
 }

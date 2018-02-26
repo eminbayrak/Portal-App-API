@@ -10,5 +10,6 @@ namespace ParentPortalAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
+        public ICollection<DistrictGroup> DistrictGroups { get; set; }
     }
 }
