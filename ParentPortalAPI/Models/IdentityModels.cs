@@ -85,7 +85,7 @@ namespace ParentPortalAPI.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<District> Districts { get; set; }
         public DbSet<Topic> Topics { get; set; }
-        public DbSet<Student> Studentss { get; set; }
+        public DbSet<Student> Students { get; set; }
 
 }
 
