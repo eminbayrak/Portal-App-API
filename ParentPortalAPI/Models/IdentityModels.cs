@@ -106,6 +106,17 @@ namespace ParentPortalAPI.Models
                 .HasRequired(ge => ge.Group)
                 .WithMany(e => e.GroupEvents)
                 .HasForeignKey(ge => ge.GroupId);
+
+            modelBuilder.Entity<GroupStudent>()
+                .HasKey(gs => new { gs.GroupId, gs.StudentId });
+            modelBuilder.Entity<GroupStudent>()
+                .HasRequired(gs => gs.Group)
+                .WithMany(s => s.GroupStudents)
+                .HasForeignKey(gs => gs.GroupId);
+            modelBuilder.Entity<GroupStudent>()
+                .HasRequired(gs => gs.Student)
+                .WithMany(s => s.GroupStudents)
+                .HasForeignKey(gs => gs.StudentId);
         }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Group> Groups { get; set; }

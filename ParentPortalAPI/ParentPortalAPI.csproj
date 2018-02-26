@@ -242,7 +242,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountGroup.cs" />
     <Compile Include="Models\AccountStudent.cs" />
     <Compile Include="Models\BindingModels\AccountBindingModels.cs" />
