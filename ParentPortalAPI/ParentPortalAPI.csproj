@@ -263,7 +263,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CreateDatabase.sql" />
+    <Content Include="App_Data\dbo.Account.data.sql" />
+    <Content Include="App_Data\dbo.AccountGroups.data.sql" />
+    <Content Include="App_Data\dbo.Groups.data.sql" />
     <Content Include="App_Data\ParentPortal-LocalDb.mdf" />
     <Content Include="App_Data\ParentPortal-LocalDb_log.ldf">
       <DependentUpon>ParentPortal-LocalDb.mdf</DependentUpon>
