@@ -15,5 +15,6 @@ namespace ParentPortalAPI.Models
         public ICollection<AccountGroup> AccountGroups { get; set; }
         public ICollection<GroupEvent> GroupEvents { get; set; }
         public ICollection<GroupStudent> GroupStudents { get; set; }
+        public string Picture { get; set; }
     }
 }
