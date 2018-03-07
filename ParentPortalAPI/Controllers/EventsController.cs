@@ -42,7 +42,7 @@ namespace ParentPortalAPI.Controllers
 
         // PUT: api/Events/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEvent(string id, Event @event)
+        public async Task<IHttpActionResult> PutEvent(int id, Event @event)
         {
             if (!ModelState.IsValid)
             {
@@ -130,7 +130,7 @@ namespace ParentPortalAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool EventExists(string id)
+        private bool EventExists(int id)
         {
             return db.Events.Count(e => e.Id == id) > 0;
         }
