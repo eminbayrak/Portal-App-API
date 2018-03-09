@@ -24,6 +24,7 @@ namespace ParentPortalAPI.Models
         public string LastName { get; set; }
         public ICollection<AccountGroup> AccountGroups { get; set; }
         public ICollection<AccountStudent> AccountStudents { get; set; }
+        public ICollection<AccountEvent> AccountEvents { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext {
@@ -86,6 +87,17 @@ namespace ParentPortalAPI.Models
                 .WithMany(a => a.AccountStudents)
                 .HasForeignKey(acs => acs.StudentId);
 
+            modelBuilder.Entity<AccountEvent>()
+                .HasKey(ace => new { ace.AccountId, ace.EventId });
+            modelBuilder.Entity<AccountEvent>()
+                .HasRequired(ace => ace.Account)
+                .WithMany(e => e.AccountEvents)
+                .HasForeignKey(ace => ace.AccountId);
+            modelBuilder.Entity<AccountEvent>()
+                .HasRequired(ace => ace.Event)
+                .WithMany(a => a.AccountEvents)
+                .HasForeignKey(ace => ace.EventId);
+
             modelBuilder.Entity<TopicComment>()
                 .HasKey(ct => new { ct.TopicId, ct.CommentId });
             modelBuilder.Entity<TopicComment>()
@@ -126,7 +138,8 @@ namespace ParentPortalAPI.Models
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Student> Students { get; set; }
 
-}
+        public System.Data.Entity.DbSet<ParentPortalAPI.Models.AccountEvent> AccountEvents { get; set; }
+    }
 
     public class ApplicationUserClaim : IdentityUserClaim { }
 
