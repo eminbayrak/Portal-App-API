@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 using ParentPortalAPI.Models;
 
 namespace ParentPortalAPI.Controllers
@@ -83,7 +84,7 @@ namespace ParentPortalAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
             db.Events.Add(@event);
 
             try
@@ -101,6 +102,9 @@ namespace ParentPortalAPI.Controllers
                     throw;
                 }
             }
+
+            db.AccountEvents.Add(new AccountEvent { AccountId = User.Identity.GetUserId(), EventId = 0 });
+
 
             return CreatedAtRoute("DefaultApi", new { id = @event.Id }, @event);
         }

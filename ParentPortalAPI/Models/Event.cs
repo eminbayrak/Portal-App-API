@@ -16,5 +16,6 @@ namespace ParentPortalAPI.Models
         public string StartDateTime { get; set; }
         public string Name { get; set; }
         public ICollection<AccountEvent> AccountEvents { get; set; }
+        public Account User { get; set; }
     }
 }

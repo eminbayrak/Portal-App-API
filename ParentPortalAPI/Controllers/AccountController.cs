@@ -18,6 +18,7 @@ using ParentPortalAPI.Models.BindingModels;
 using ParentPortalAPI.Models;
 using ParentPortalAPI.Providers;
 using ParentPortalAPI.Results;
+using System.Collections;
 
 namespace ParentPortalAPI.Controllers
 {
@@ -57,20 +58,24 @@ namespace ParentPortalAPI.Controllers
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]
-        public async Task<UserInfoViewModel> GetUserInfo()
+        public IEnumerable<UserInfoViewModel> GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
-            Account user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            Account user = UserManager.FindById(User.Identity.GetUserId());
 
-            return new UserInfoViewModel
+            List<UserInfoViewModel> userInfo = new List<UserInfoViewModel>();
+
+            userInfo.Add(new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            };
+            });
+
+            return userInfo;
         }
 
         // POST api/Account/Logout
