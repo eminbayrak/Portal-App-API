@@ -71,6 +71,7 @@ namespace ParentPortalAPI.Controllers
                 Email = User.Identity.GetUserName(),
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                Avatar = user.Avatar,
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             });
