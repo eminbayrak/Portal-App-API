@@ -22,6 +22,7 @@ namespace ParentPortalAPI.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Avatar { get; set; }
         public ICollection<AccountGroup> AccountGroups { get; set; }
         public ICollection<AccountStudent> AccountStudents { get; set; }
         public ICollection<AccountEvent> AccountEvents { get; set; }
