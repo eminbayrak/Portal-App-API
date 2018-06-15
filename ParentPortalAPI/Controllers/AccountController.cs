@@ -64,16 +64,18 @@ namespace ParentPortalAPI.Controllers
 
             Account user = UserManager.FindById(User.Identity.GetUserId());
 
-            List<UserInfoViewModel> userInfo = new List<UserInfoViewModel>();
-
-            userInfo.Add(new UserInfoViewModel
+            var userInfo = new List<UserInfoViewModel>
             {
-                Email = User.Identity.GetUserName(),
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
-            });
+                new UserInfoViewModel
+                {
+                    Email = User.Identity.GetUserName(),
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    HasRegistered = externalLogin == null,
+                    LoginProvider = externalLogin?.LoginProvider
+                }
+            };
+
 
             return userInfo;
         }
@@ -340,7 +342,7 @@ namespace ParentPortalAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new Account() { UserName = model.Email, Email = model.Email };
+            var user = new Account() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
