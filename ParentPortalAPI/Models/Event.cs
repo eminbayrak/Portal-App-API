@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 
 namespace ParentPortalAPI.Models
@@ -24,9 +25,9 @@ namespace ParentPortalAPI.Models
         public string TeamName { get; set; }
 
         public string OpponentTeamName { get; set; }
-        public string GroupId { get; set; }
+        //public string GroupId { get; set; }
         public int Id { get; set; }
         public ICollection<AccountEvent> AccountEvents { get; set; }
-        public Account User { get; set; }
+        //public Account User { get; set; }
     }
 }

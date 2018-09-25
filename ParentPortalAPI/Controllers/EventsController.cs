@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.AspNet.Identity;
 using ParentPortalAPI.Models;
+using ParentPortalAPI.Models.ViewModels;
 
 namespace ParentPortalAPI.Controllers
 {
@@ -25,7 +26,15 @@ namespace ParentPortalAPI.Controllers
         // GET: api/Events
         public IQueryable<Event> GetEvents()
         {
-            return db.Events;
+            //string userId = User.Identity.GetUserId();
+            //IQueryable<Event> evt = db.Events.Where(
+            //        e => e.AccountEvents.Any(ae => ae.AccountId.Equals(userId)));
+            //return evt;
+            string teamName = User.Identity.GetTeamName();
+            
+            IQueryable<Event> evt = db.Events.Where(
+                    e => e.TeamName.Equals(teamName));
+            return evt;
         }
 
         // GET: api/Events/5
@@ -37,7 +46,6 @@ namespace ParentPortalAPI.Controllers
             {
                 return NotFound();
             }
-
             return Ok(@event);
         }
 

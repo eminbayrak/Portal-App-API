@@ -63,7 +63,7 @@ namespace ParentPortalAPI.Controllers
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
             Account user = UserManager.FindById(User.Identity.GetUserId());
-
+            
             var userInfo = new List<UserInfoViewModel>
             {
                 new UserInfoViewModel
@@ -71,6 +71,7 @@ namespace ParentPortalAPI.Controllers
                     Email = User.Identity.GetUserName(),
                     FirstName = user.FirstName,
                     LastName = user.LastName,
+                    TeamName = user.TeamName,
                     HasRegistered = externalLogin == null,
                     LoginProvider = externalLogin?.LoginProvider
                 }
