@@ -16,6 +16,9 @@ namespace ParentPortalAPI.Models
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
             // Add custom user claims here            
             userIdentity.AddClaim(new Claim("TeamName", TeamName.ToString()));
+            userIdentity.AddClaim(new Claim("TeamName", TeamName.ToString()));
+            userIdentity.AddClaim(new Claim("LastName", LastName.ToString()));
+            userIdentity.AddClaim(new Claim("Email", Email.ToString()));
             return userIdentity;
         }
 
@@ -31,8 +34,14 @@ namespace ParentPortalAPI.Models
         public static string GetTeamName(this IIdentity identity)
         {
             var claim = ((ClaimsIdentity)identity).FindFirst("TeamName");
-            //return (claim != null) ? claim.Value : string.Empty;
             return claim.Value;
+        }
+
+        public static string GetGroupMembers(this IIdentity identity)
+        {
+            var db = new ApplicationDbContext();
+            var allUsers = ((ClaimsIdentity)identity).FindAll("Email").ToString();
+            return allUsers;
         }
     }
     public class ApplicationDbContext : IdentityDbContext {
@@ -147,6 +156,8 @@ namespace ParentPortalAPI.Models
         public DbSet<Student> Students { get; set; }
 
         public System.Data.Entity.DbSet<ParentPortalAPI.Models.AccountEvent> AccountEvents { get; set; }
+
+        public System.Data.Entity.DbSet<ParentPortalAPI.Models.AccountGroup> AccountGroups { get; set; }
     }
 
     public class ApplicationUserClaim : IdentityUserClaim { }

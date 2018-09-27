@@ -230,6 +230,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountEventsController.cs" />
+    <Compile Include="Controllers\AccountGroupsController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />

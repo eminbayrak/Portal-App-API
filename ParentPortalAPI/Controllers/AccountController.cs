@@ -343,7 +343,14 @@ namespace ParentPortalAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new Account() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
+            var user = new Account()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                TeamName = model.TeamName
+            };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

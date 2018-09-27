@@ -24,14 +24,10 @@ namespace ParentPortalAPI.Controllers
         // GET: api/Groups
         public IQueryable<Group> GetGroups()
         {
-            string userId = User.Identity.GetUserId();
+            string teamName = User.Identity.GetTeamName();
 
             IQueryable<Group> grp = db.Groups.Where(
-                    g => g.AccountGroups.Any(
-                        ag => ag.AccountId.Equals(userId)
-                    )
-                );
-
+                    e => e.Name.Equals(teamName));
             return grp;
         }
 
