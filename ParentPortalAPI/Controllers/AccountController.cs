@@ -353,6 +353,23 @@ namespace ParentPortalAPI.Controllers
             };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+            ApplicationDbContext db = new ApplicationDbContext();
+            try
+            {
+                AccountGroup grp = new AccountGroup();
+                grp.FirstName = user.FirstName;
+                grp.LastName = user.LastName;
+                grp.Email = user.Email;
+                grp.TeamName = user.TeamName;
+                grp.AccountId = user.Id;
+                db.AccountGroups.Add(grp);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
 
             if (!result.Succeeded)
             {

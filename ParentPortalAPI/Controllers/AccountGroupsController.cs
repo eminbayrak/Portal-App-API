@@ -20,12 +20,12 @@ namespace ParentPortalAPI.Controllers
         // GET: api/AccountGroups
         public IQueryable<AccountGroup> GetAccountGroups()
         {
-            string teamName = User.Identity.GetGroupMembers();
+            //string teamName = User.Identity.GetGroupMembers();
 
-            IQueryable<AccountGroup> ag = db.AccountGroups.Where(
-                    e => e.Group.Name.Equals(teamName));
-            return ag;
-            //return db.AccountGroups;
+            //IQueryable<AccountGroup> ag = db.AccountGroups.Where(
+            //        e => e.Group.Name.Equals(teamName));
+            //return ag;
+            return db.AccountGroups;
         }
 
         // GET: api/AccountGroups/5

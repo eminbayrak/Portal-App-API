@@ -10,6 +10,10 @@ namespace ParentPortalAPI.Models
         public int GroupId { get; set; }
         public Group Group { get; set; }
         public string AccountId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string TeamName { get; set; }
         public Account Account { get; set; }
     }
 }
