@@ -14,6 +14,8 @@ namespace ParentPortalAPI.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string TeamName { get; set; }
+        public string TeamCode { get; set; }
+        public DateTime AccountDate { get; set; }
         public Account Account { get; set; }
     }
 }

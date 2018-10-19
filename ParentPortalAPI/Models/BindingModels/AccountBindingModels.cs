@@ -51,6 +51,14 @@ namespace ParentPortalAPI.Models.BindingModels
         public string TeamName { get; set; }
 
         [Required]
+        [Display(Name = "Team Code")]
+        public string TeamCode { get; set; }
+
+        [Required]
+        [Display(Name = "Account Created On")]
+        public DateTime AccountDate { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -67,6 +75,13 @@ namespace ParentPortalAPI.Models.BindingModels
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class AccountUpdateBindingModel
+    {
+        [Required]
+        [Display(Name = "TeamName")]
+        public string TeamName { get; set; }
     }
 
     public class RemoveLoginBindingModel

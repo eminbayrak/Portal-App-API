@@ -30,9 +30,9 @@ namespace ParentPortalAPI.Controllers
 
         // GET: api/AccountGroups/5
         [ResponseType(typeof(AccountGroup))]
-        public async Task<IHttpActionResult> GetAccountGroup(string id)
+        public async Task<IHttpActionResult> GetAccountGroup(string teamCode)
         {
-            AccountGroup accountGroup = await db.AccountGroups.FindAsync(id);
+            AccountGroup accountGroup = await db.AccountGroups.FindAsync(teamCode);
             if (accountGroup == null)
             {
                 return NotFound();

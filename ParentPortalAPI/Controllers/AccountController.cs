@@ -333,6 +333,30 @@ namespace ParentPortalAPI.Controllers
             return logins;
         }
 
+        // POST api/Account/Update
+        [AllowAnonymous]
+        [Route("Update")]
+        public async Task<IHttpActionResult> AccountUpdate(RegisterBindingModel model)
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.UpdateAsync(user);
+            model.TeamName = user.TeamName;
+            model.TeamCode = user.TeamCode;
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
@@ -349,19 +373,25 @@ namespace ParentPortalAPI.Controllers
                 Email = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                TeamName = model.TeamName
+                TeamName = model.TeamName,
+                TeamCode = model.TeamCode,
+                AccountDate = model.AccountDate,
             };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
             ApplicationDbContext db = new ApplicationDbContext();
             try
             {
-                AccountGroup grp = new AccountGroup();
-                grp.FirstName = user.FirstName;
-                grp.LastName = user.LastName;
-                grp.Email = user.Email;
-                grp.TeamName = user.TeamName;
-                grp.AccountId = user.Id;
+                AccountGroup grp = new AccountGroup
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+                    TeamName = user.TeamName,
+                    TeamCode = user.TeamCode,
+                    AccountId = user.Id,
+                    AccountDate = user.AccountDate
+                };
                 db.AccountGroups.Add(grp);
                 db.SaveChanges();
             }
