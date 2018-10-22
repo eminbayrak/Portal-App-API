@@ -323,7 +323,7 @@ namespace ParentPortalAPI.Controllers
                         response_type = "token",
                         client_id = Startup.PublicClientId,
                         redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
-                        state = state
+                        state
                     }),
                     State = state
                 };
@@ -343,10 +343,12 @@ namespace ParentPortalAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            IdentityResult result = await UserManager.UpdateAsync(user);
             model.TeamName = user.TeamName;
             model.TeamCode = user.TeamCode;
+
+            IdentityResult result = await UserManager.UpdateAsync(user);
+            ApplicationDbContext db = new ApplicationDbContext();
+            db.SaveChanges();
 
             if (!result.Succeeded)
             {
