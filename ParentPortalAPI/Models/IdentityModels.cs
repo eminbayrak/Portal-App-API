@@ -18,6 +18,7 @@ namespace ParentPortalAPI.Models
             // Add custom user claims here            
             userIdentity.AddClaim(new Claim("TeamName", TeamName.ToString()));            
             userIdentity.AddClaim(new Claim("TeamCode", TeamCode.ToString()));
+            userIdentity.AddClaim(new Claim("Id", Id.ToString()));
             return userIdentity;
         }
 

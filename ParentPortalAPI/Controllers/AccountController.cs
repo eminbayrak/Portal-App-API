@@ -72,6 +72,8 @@ namespace ParentPortalAPI.Controllers
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     TeamName = user.TeamName,
+                    Id = user.Id,
+                    TeamCode = user.TeamCode,
                     HasRegistered = externalLogin == null,
                     LoginProvider = externalLogin?.LoginProvider
                 }
@@ -336,15 +338,16 @@ namespace ParentPortalAPI.Controllers
         // POST api/Account/Update
         [AllowAnonymous]
         [Route("Update")]
-        public async Task<IHttpActionResult> AccountUpdate(RegisterBindingModel model)
+        public async Task<IHttpActionResult> AccountUpdate(AccountUpdateBindingModel model)
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
+            Account user = UserManager.FindById(User.Identity.GetUserId());
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            model.TeamName = user.TeamName;
-            model.TeamCode = user.TeamCode;
+            user.TeamName = model.TeamName;
+            user.TeamCode = model.TeamCode;
 
             IdentityResult result = await UserManager.UpdateAsync(user);
             ApplicationDbContext db = new ApplicationDbContext();

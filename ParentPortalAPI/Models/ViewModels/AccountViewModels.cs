@@ -31,6 +31,8 @@ namespace ParentPortalAPI.Models.ViewModels
 
         public string LastName { get; set; }
         public string TeamName { get; set; }
+        public string TeamCode { get; set; }
+        public string Id { get; set; }
 
         public IEnumerable<Student> Children { get; set; }
 

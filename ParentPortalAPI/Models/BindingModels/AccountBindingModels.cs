@@ -80,8 +80,9 @@ namespace ParentPortalAPI.Models.BindingModels
     public class AccountUpdateBindingModel
     {
         [Required]
-        [Display(Name = "TeamName")]
         public string TeamName { get; set; }
+        public string TeamCode { get; set; }
+        public string Id { get; set; }
     }
 
     public class RemoveLoginBindingModel
