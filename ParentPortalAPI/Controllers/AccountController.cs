@@ -19,6 +19,7 @@ using ParentPortalAPI.Models;
 using ParentPortalAPI.Providers;
 using ParentPortalAPI.Results;
 using System.Collections;
+using System.Linq;
 
 namespace ParentPortalAPI.Controllers
 {
@@ -351,6 +352,11 @@ namespace ParentPortalAPI.Controllers
 
             IdentityResult result = await UserManager.UpdateAsync(user);
             ApplicationDbContext db = new ApplicationDbContext();
+
+            AccountGroup accountGroup = db.AccountGroups.Where(ag => ag.AccountId == user.Id).FirstOrDefault();
+            accountGroup.TeamName = model.TeamName;
+            accountGroup.TeamCode = model.TeamCode;
+
             db.SaveChanges();
 
             if (!result.Succeeded)

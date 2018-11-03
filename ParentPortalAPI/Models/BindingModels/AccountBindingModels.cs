@@ -82,7 +82,6 @@ namespace ParentPortalAPI.Models.BindingModels
         [Required]
         public string TeamName { get; set; }
         public string TeamCode { get; set; }
-        public string Id { get; set; }
     }
 
     public class RemoveLoginBindingModel
